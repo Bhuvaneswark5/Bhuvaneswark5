@@ -1,0 +1,86 @@
+
+/*complete school databasa management system*/
+
+create table public.tbl_school(sch_id varchar(40) primary key,
+							  sch_name varchar(40) not null,
+							  sch_address varchar(40) not null,
+							  sch_phone_no int unique)
+							  
+							  
+create table public.tbl_student(st_id varchar(40) primary key,
+							   st_roll_no varchar(40) unique,
+							   st_name varchar(40)not null,
+							   pa_id varchar(40) not null,  /*fk*/
+								reg_id varchar(40) not null, /*fk*/
+							   st_phone_no integer,
+							   st_DOB date not null,
+							   st_gender varchar(10)not null,
+							   st_email varchar(40) unique,
+							   constraint parient_id foreign key(pa_id) references public.tbl_parient(pa_id),
+							   constraint registration_id foreign key(reg_id) references public.tbl_registration(reg_id))	
+
+create table public.tbl_parient(pa_id varchar(40) primary key,
+								pa_name varchar(40) not null,
+								pa_phone_no integer,
+								pa_occupation varchar(40)not null)
+
+create table public.tbl_registration(reg_id varchar(40) primary key,
+									reg_no varchar(40) not null,
+									reg_date date not null)
+
+create table public.tbl_course_reg(co_id varchar(40) primary key,
+								  co_name varchar(40) not null,
+								   st_id varchar(40) not null,
+								   constraint student_id foreign key(st_id) references public.tbl_student(st_id))
+
+create table public.tbl_class(cls_id varchar(40) primary key,
+							 cls_name varchar(40) not null,
+							 st_id varchar(40) not null,   /*fk*/
+							 co_id varchar(40) not null,
+							 teacher_id varchar(40) not null,
+							 room_id varchar(40) not null,
+							 cls_date date not null,
+							 cls_start_time time not null,
+							 cls_end_time time not null,
+							 constraint student_id foreign key(st_id) references public.tbl_student(st_id),
+							 constraint course_id foreign key(co_id) references public.tbl_course_reg(co_id),
+							 constraint teacher_id  foreign key(teacher_id) references public.tbl_teacher(teacher_id),
+							 constraint room_id foreign key(room_id) references public.tbl_room(room_id) )
+							 
+							 
+ create table public.tbl_teacher(teacher_id varchar(40) primary key,
+							   teacher_name varchar(40) not null,
+							   teacher_mail varchar(40) unique,
+							   teacher_gender varchar(40) not null
+							   )	
+create table public.tbl_room(room_id varchar(40) primary key,
+							 room_no varchar(40) )
+							 
+							 /*student fee details*/
+							 
+create table public.tbl_fee(f_id varchar(40) ,
+						   st_id varchar(40) not null,
+						   f_paid_date date not null,
+						   f_invoc_no varchar(40) not null,
+						    constraint student_id foreign key(st_id) references public.tbl_student(st_id))
+							
+							/*manage school employee*/
+							
+create table public.tbl_employee(emp_id varchar(40) primary key,
+								emp_name varchar(40) not null,
+								 emp_designation  varchar(40) not null,
+								 emp_address varchar(40),
+								 emp_phone_no integer not null,
+								 emp_email varchar(40) unique,
+								 emp_type varchar(40)
+								)
+								 
+								 /*employee salary manage*/
+								 
+create table public.tbl_salary(salary_id varchar(40) not null,
+							  emp_id varchar(40) not null,
+							  total_salary integer  not null,
+							   salary_status varchar(40) not null,
+							  constraint employee_id foreign key(emp_id) references public.tbl_employee(emp_id) )
+							  
+							
