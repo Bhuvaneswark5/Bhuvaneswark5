@@ -1,4 +1,4 @@
-- 👋 Hi, I’m @Bhuvaneswark5
+- 👋 Hi, I’m @Bhuvaneswar
 - 👀 I’m interested in Data Analytics and data Science.
 - 🌱 I’m currently learning Data Science.
 - 💞️ I’m looking to collaborate on Full time job and internships.
@@ -8,6 +8,6 @@
 - ⚡ Fun fact: learning with joy
 
 <!---
-Bhuvaneswark5/Bhuvaneswark5 is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+Bhuvaneswar/Bhuvaneswar is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 You can click the Preview link to take a look at your changes.
 --->
